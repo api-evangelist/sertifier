@@ -1,0 +1,70 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Sertifier
+providerId: sertifier
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Digital Credentials
+- Certificates
+- Credentialing
+- Rate Limiting
+- Quotas
+description: >-
+  Sertifier does not publish fixed numeric HTTP rate limits (requests per second
+  or per minute) for the Credential API. The practical throughput ceiling for a
+  program is the account's plan-based annual recipient allowance rather than a
+  per-endpoint request cap - the API is designed to issue anywhere from tens to
+  tens of thousands of credentials against that allowance. Sertifier's own
+  guidance emphasizes reliability practices over rate limits: protect the
+  secretKey, and guard the credential-issuance path with an idempotency check
+  (for example enrolment ID + campaignId) so a completion event that fires twice
+  does not double-issue.
+notes: >-
+  No numeric per-account or per-endpoint request limits are documented as of the
+  review date. Values below reflect the plan-based recipient model and Sertifier's
+  documented idempotency guidance, not a published throttle policy. Confirm any
+  server-side limits with Sertifier support before running large bulk imports.
+sources:
+- https://help.sertifier.com/sertifier-api-quickstart
+- https://help.sertifier.com/api-key-integrations
+- https://sertifier.docs.apiary.io/
+- https://sertifier.com/pricing
+responseCodes:
+  throttled: 429
+limits:
+- name: Credential API Requests
+  scope: account
+  metric: requests
+  limit: not published
+  notes: No fixed numeric request-rate limit is documented for the Credential API.
+- name: Annual Recipient Allowance
+  scope: account
+  metric: recipients
+  limit: per plan
+  notes: The effective issuance ceiling is the plan's annual unique-recipient allowance (Free 250; paid tiers higher). Credentials per recipient are unlimited.
+- name: Bulk Credential Issuance
+  scope: campaign
+  metric: credentials
+  limit: designed for high volume (50 to 50,000+ per campaign)
+  notes: Sertifier markets issuing tens of thousands of credentials via addCredentials; batch large jobs and verify server-side limits with support.
+policies:
+- name: Idempotency
+  description: >-
+    Guard the addCredentials call with an idempotency key such as
+    (enrolment ID + campaignId), or use externalId / updateExistingCredentials,
+    so a webhook or completion event that fires more than once does not issue a
+    duplicate credential.
+- name: Secret Protection
+  description: >-
+    Store the secretKey in a secrets vault, rotate it when staff change, and
+    never embed it in client-side JavaScript.
+- name: Backoff Strategy
+  description: >-
+    Clients should implement exponential backoff with jitter and honor
+    Retry-After on any 429 or 5xx responses during large bulk imports.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

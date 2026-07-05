@@ -1,0 +1,388 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sertifier Credential API",
+    "version": "3.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "secretKey",
+        "value": "{{secretKey}}",
+        "in": "header"
+      }
+    },
+    "headers": [
+      { "name": "api-version", "value": "3.3" },
+      { "name": "Content-Type", "value": "application/json" }
+    ]
+  },
+  "items": [
+    {
+      "info": { "name": "Authentication", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Verify API key", "type": "http" },
+          "http": { "method": "GET", "url": "https://b2b.sertifier.com/Test" },
+          "docs": "Verifies that the provided secretKey is valid."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Campaigns", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a campaign", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/campaign",
+            "body": { "type": "json", "data": "{\n  \"name\": \"Course Completion\",\n  \"designId\": \"\",\n  \"detailId\": \"\",\n  \"emailTemplateId\": \"\"\n}" }
+          },
+          "docs": "Creates a campaign that binds a Design, Detail, and Email Template. Returns the campaignId."
+        },
+        {
+          "info": { "name": "Retrieve a campaign", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://b2b.sertifier.com/campaign/:campaignId",
+            "params": [ { "name": "campaignId", "value": "", "type": "path", "description": "The campaign ID." } ]
+          },
+          "docs": "Retrieves a campaign by ID."
+        },
+        {
+          "info": { "name": "Update a campaign", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://b2b.sertifier.com/campaign/:campaignId",
+            "params": [ { "name": "campaignId", "value": "", "type": "path", "description": "The campaign ID." } ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates a campaign."
+        },
+        {
+          "info": { "name": "Delete a campaign", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/campaign/:campaignId",
+            "params": [ { "name": "campaignId", "value": "", "type": "path", "description": "The campaign ID." } ]
+          },
+          "docs": "Deletes a campaign."
+        },
+        {
+          "info": { "name": "Search campaigns", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/campaign/search",
+            "body": { "type": "json", "data": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" }
+          },
+          "docs": "Returns a paginated list of campaigns."
+        },
+        {
+          "info": { "name": "Add / issue credentials", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/campaign/addCredentials",
+            "body": { "type": "json", "data": "{\n  \"campaignId\": \"\",\n  \"credentials\": [\n    {\n      \"name\": \"Jane Doe\",\n      \"email\": \"jane@example.com\",\n      \"quickPublish\": true,\n      \"externalId\": \"enrolment-123\",\n      \"attributes\": [ { \"id\": \"score\", \"value\": \"95\" } ]\n    }\n  ]\n}" }
+          },
+          "docs": "Issues credentials into a campaign. Response includes the permanent, verifiable credential URL. Guard with an idempotency key (enrolment ID + campaignId)."
+        },
+        {
+          "info": { "name": "Send / publish a campaign", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/campaign/send",
+            "body": { "type": "json", "data": "{\n  \"campaignId\": \"\"\n}" }
+          },
+          "docs": "Publishes a campaign's credentials and sends delivery emails."
+        },
+        {
+          "info": { "name": "Schedule credential distribution", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/campaign/schedule",
+            "body": { "type": "json", "data": "{\n  \"campaignId\": \"\",\n  \"scheduleDate\": \"2026-08-01T09:00:00Z\"\n}" }
+          },
+          "docs": "Schedules a campaign's credential distribution at a future UTC time."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Credentials", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Retrieve a credential", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://b2b.sertifier.com/credential/:credentialId",
+            "params": [ { "name": "credentialId", "value": "", "type": "path", "description": "The credential ID." } ]
+          },
+          "docs": "Retrieves an issued credential by ID."
+        },
+        {
+          "info": { "name": "Update a credential", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://b2b.sertifier.com/credential/:credentialId",
+            "params": [ { "name": "credentialId", "value": "", "type": "path", "description": "The credential ID." } ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an issued credential."
+        },
+        {
+          "info": { "name": "Delete a credential", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/credential/:credentialId",
+            "params": [ { "name": "credentialId", "value": "", "type": "path", "description": "The credential ID." } ]
+          },
+          "docs": "Deletes an issued credential."
+        },
+        {
+          "info": { "name": "Search credentials", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/credential/search",
+            "body": { "type": "json", "data": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" }
+          },
+          "docs": "Returns a paginated list of issued credentials."
+        },
+        {
+          "info": { "name": "Publish credentials", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/credential/publish",
+            "body": { "type": "json", "data": "{\n  \"credentialIds\": []\n}" }
+          },
+          "docs": "Publishes credentials, making their verifiable URLs live."
+        },
+        {
+          "info": { "name": "Generate credential PDF link", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://b2b.sertifier.com/credential/generatePDFLink/:credentialIdOrCertificateNo",
+            "params": [ { "name": "credentialIdOrCertificateNo", "value": "", "type": "path", "description": "The credential ID or certificate number." } ]
+          },
+          "docs": "Generates a downloadable PDF link for a credential."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Designs", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Retrieve a design", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://b2b.sertifier.com/design/:designId",
+            "params": [ { "name": "designId", "value": "", "type": "path", "description": "The design ID." } ]
+          },
+          "docs": "Retrieves a design by ID. Designs are authored in the web app."
+        },
+        {
+          "info": { "name": "Delete a design", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/design/:designId",
+            "params": [ { "name": "designId", "value": "", "type": "path", "description": "The design ID." } ]
+          },
+          "docs": "Deletes a design."
+        },
+        {
+          "info": { "name": "Search designs", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/design/search",
+            "body": { "type": "json", "data": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" }
+          },
+          "docs": "Returns a paginated list of designs."
+        },
+        {
+          "info": { "name": "Copy a design", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/design/copy",
+            "body": { "type": "json", "data": "{\n  \"designId\": \"\"\n}" }
+          },
+          "docs": "Duplicates an existing design."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Details", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a detail", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/detail",
+            "body": { "type": "json", "data": "{\n  \"title\": \"\",\n  \"description\": \"\",\n  \"skills\": []\n}" }
+          },
+          "docs": "Creates a credential Detail."
+        },
+        {
+          "info": { "name": "Retrieve a detail", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://b2b.sertifier.com/detail/:detailId",
+            "params": [ { "name": "detailId", "value": "", "type": "path", "description": "The detail ID." } ]
+          },
+          "docs": "Retrieves a credential Detail by ID."
+        },
+        {
+          "info": { "name": "Update a detail", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://b2b.sertifier.com/detail/:detailId",
+            "params": [ { "name": "detailId", "value": "", "type": "path", "description": "The detail ID." } ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates a credential Detail. Details become immutable once credentials are sent."
+        },
+        {
+          "info": { "name": "Search details", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/detail/search",
+            "body": { "type": "json", "data": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" }
+          },
+          "docs": "Returns a paginated list of credential Details."
+        },
+        {
+          "info": { "name": "Search skills library", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/detail/searchSkills",
+            "body": { "type": "json", "data": "{\n  \"query\": \"project management\"\n}" }
+          },
+          "docs": "Searches the skills library to attach skills to a Detail."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Email Templates", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Retrieve an email template", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://b2b.sertifier.com/emailTemplate/:emailTemplateId",
+            "params": [ { "name": "emailTemplateId", "value": "", "type": "path", "description": "The email template ID." } ]
+          },
+          "docs": "Retrieves an email template by ID."
+        },
+        {
+          "info": { "name": "Delete an email template", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/emailTemplate/:emailTemplateId",
+            "params": [ { "name": "emailTemplateId", "value": "", "type": "path", "description": "The email template ID." } ]
+          },
+          "docs": "Deletes an email template."
+        },
+        {
+          "info": { "name": "Search email templates", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/emailTemplate/search",
+            "body": { "type": "json", "data": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" }
+          },
+          "docs": "Returns a paginated list of email templates."
+        },
+        {
+          "info": { "name": "Copy an email template", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/emailTemplate/copy",
+            "body": { "type": "json", "data": "{\n  \"emailTemplateId\": \"\"\n}" }
+          },
+          "docs": "Duplicates an existing email template."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Recipients", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Add a recipient", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/recipient",
+            "body": { "type": "json", "data": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\"\n}" }
+          },
+          "docs": "Adds a recipient."
+        },
+        {
+          "info": { "name": "Update recipient(s)", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://b2b.sertifier.com/recipient",
+            "body": { "type": "json", "data": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"email\": \"\"\n}" }
+          },
+          "docs": "Updates one or more recipients."
+        },
+        {
+          "info": { "name": "Delete a recipient", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/recipient/:recipientId",
+            "params": [ { "name": "recipientId", "value": "", "type": "path", "description": "The recipient ID." } ]
+          },
+          "docs": "Deletes a recipient."
+        },
+        {
+          "info": { "name": "Search recipients", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/recipient/search",
+            "body": { "type": "json", "data": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" }
+          },
+          "docs": "Returns a paginated list of recipients."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Attributes", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create an attribute", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/attribute",
+            "body": { "type": "json", "data": "{\n  \"name\": \"score\",\n  \"value\": \"\"\n}" }
+          },
+          "docs": "Creates a custom attribute."
+        },
+        {
+          "info": { "name": "Update an attribute", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://b2b.sertifier.com/attribute/:attributeId",
+            "params": [ { "name": "attributeId", "value": "", "type": "path", "description": "The attribute ID." } ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates a custom attribute."
+        },
+        {
+          "info": { "name": "Delete an attribute", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/attribute/:attributeId",
+            "params": [ { "name": "attributeId", "value": "", "type": "path", "description": "The attribute ID." } ]
+          },
+          "docs": "Deletes a custom attribute."
+        },
+        {
+          "info": { "name": "Search attributes", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/attribute/search",
+            "body": { "type": "json", "data": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" }
+          },
+          "docs": "Returns a paginated list of custom attributes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,409 @@
+{
+  "info": {
+    "name": "Sertifier Credential API",
+    "description": "Programmatic design, issuance, verification, and management of digital credentials (certificates and badges) on Sertifier. A credential is issued inside a Campaign that binds a Design, a Detail, and an Email Template, delivered to a Recipient, with custom Attributes merged at issue time. Base URL: https://b2b.sertifier.com. Authenticate with a private API key in the `secretKey` header plus an `api-version` header (3.3). Endpoints and the base host are grounded in Sertifier's public Apiary reference and help-center guides; some request bodies are minimally modeled.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "secretKey", "type": "string" },
+      { "key": "value", "value": "{{secretKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://b2b.sertifier.com", "type": "string" },
+    { "key": "secretKey", "value": "", "type": "string" },
+    { "key": "apiVersion", "value": "3.3", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Verify API key",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/Test", "host": ["{{baseUrl}}"], "path": ["Test"] },
+            "description": "Verifies that the provided secretKey is valid."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Campaigns",
+      "item": [
+        {
+          "name": "Create a campaign",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Course Completion\",\n  \"designId\": \"\",\n  \"detailId\": \"\",\n  \"emailTemplateId\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/campaign", "host": ["{{baseUrl}}"], "path": ["campaign"] },
+            "description": "Creates a campaign that binds a Design, Detail, and Email Template. Returns the campaignId."
+          }
+        },
+        {
+          "name": "Retrieve a campaign",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/campaign/:campaignId", "host": ["{{baseUrl}}"], "path": ["campaign", ":campaignId"], "variable": [ { "key": "campaignId", "value": "" } ] },
+            "description": "Retrieves a campaign by ID."
+          }
+        },
+        {
+          "name": "Update a campaign",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/campaign/:campaignId", "host": ["{{baseUrl}}"], "path": ["campaign", ":campaignId"], "variable": [ { "key": "campaignId", "value": "" } ] },
+            "description": "Updates a campaign."
+          }
+        },
+        {
+          "name": "Delete a campaign",
+          "request": {
+            "method": "DELETE",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/campaign/:campaignId", "host": ["{{baseUrl}}"], "path": ["campaign", ":campaignId"], "variable": [ { "key": "campaignId", "value": "" } ] },
+            "description": "Deletes a campaign."
+          }
+        },
+        {
+          "name": "Search campaigns",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" },
+            "url": { "raw": "{{baseUrl}}/campaign/search", "host": ["{{baseUrl}}"], "path": ["campaign", "search"] },
+            "description": "Returns a paginated list of campaigns."
+          }
+        },
+        {
+          "name": "Add / issue credentials",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"campaignId\": \"\",\n  \"credentials\": [\n    {\n      \"name\": \"Jane Doe\",\n      \"email\": \"jane@example.com\",\n      \"quickPublish\": true,\n      \"externalId\": \"enrolment-123\",\n      \"attributes\": [ { \"id\": \"score\", \"value\": \"95\" } ]\n    }\n  ]\n}" },
+            "url": { "raw": "{{baseUrl}}/campaign/addCredentials", "host": ["{{baseUrl}}"], "path": ["campaign", "addCredentials"] },
+            "description": "Issues credentials into a campaign. Response includes the permanent, verifiable credential URL. Guard with an idempotency key (enrolment ID + campaignId)."
+          }
+        },
+        {
+          "name": "Send / publish a campaign",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"campaignId\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/campaign/send", "host": ["{{baseUrl}}"], "path": ["campaign", "send"] },
+            "description": "Publishes a campaign's credentials and sends delivery emails."
+          }
+        },
+        {
+          "name": "Schedule credential distribution",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"campaignId\": \"\",\n  \"scheduleDate\": \"2026-08-01T09:00:00Z\"\n}" },
+            "url": { "raw": "{{baseUrl}}/campaign/schedule", "host": ["{{baseUrl}}"], "path": ["campaign", "schedule"] },
+            "description": "Schedules a campaign's credential distribution at a future UTC time."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Credentials",
+      "item": [
+        {
+          "name": "Retrieve a credential",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/credential/:credentialId", "host": ["{{baseUrl}}"], "path": ["credential", ":credentialId"], "variable": [ { "key": "credentialId", "value": "" } ] },
+            "description": "Retrieves an issued credential by ID."
+          }
+        },
+        {
+          "name": "Update a credential",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/credential/:credentialId", "host": ["{{baseUrl}}"], "path": ["credential", ":credentialId"], "variable": [ { "key": "credentialId", "value": "" } ] },
+            "description": "Updates an issued credential."
+          }
+        },
+        {
+          "name": "Delete a credential",
+          "request": {
+            "method": "DELETE",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/credential/:credentialId", "host": ["{{baseUrl}}"], "path": ["credential", ":credentialId"], "variable": [ { "key": "credentialId", "value": "" } ] },
+            "description": "Deletes an issued credential."
+          }
+        },
+        {
+          "name": "Search credentials",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" },
+            "url": { "raw": "{{baseUrl}}/credential/search", "host": ["{{baseUrl}}"], "path": ["credential", "search"] },
+            "description": "Returns a paginated list of issued credentials."
+          }
+        },
+        {
+          "name": "Publish credentials",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"credentialIds\": []\n}" },
+            "url": { "raw": "{{baseUrl}}/credential/publish", "host": ["{{baseUrl}}"], "path": ["credential", "publish"] },
+            "description": "Publishes credentials, making their verifiable URLs live."
+          }
+        },
+        {
+          "name": "Generate credential PDF link",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/credential/generatePDFLink/:credentialIdOrCertificateNo", "host": ["{{baseUrl}}"], "path": ["credential", "generatePDFLink", ":credentialIdOrCertificateNo"], "variable": [ { "key": "credentialIdOrCertificateNo", "value": "" } ] },
+            "description": "Generates a downloadable PDF link for a credential by ID or certificate number."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Designs",
+      "item": [
+        {
+          "name": "Retrieve a design",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/design/:designId", "host": ["{{baseUrl}}"], "path": ["design", ":designId"], "variable": [ { "key": "designId", "value": "" } ] },
+            "description": "Retrieves a design by ID. Designs are authored in the web app."
+          }
+        },
+        {
+          "name": "Delete a design",
+          "request": {
+            "method": "DELETE",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/design/:designId", "host": ["{{baseUrl}}"], "path": ["design", ":designId"], "variable": [ { "key": "designId", "value": "" } ] },
+            "description": "Deletes a design."
+          }
+        },
+        {
+          "name": "Search designs",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" },
+            "url": { "raw": "{{baseUrl}}/design/search", "host": ["{{baseUrl}}"], "path": ["design", "search"] },
+            "description": "Returns a paginated list of designs."
+          }
+        },
+        {
+          "name": "Copy a design",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"designId\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/design/copy", "host": ["{{baseUrl}}"], "path": ["design", "copy"] },
+            "description": "Duplicates an existing design."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Details",
+      "item": [
+        {
+          "name": "Create a detail",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"title\": \"\",\n  \"description\": \"\",\n  \"skills\": []\n}" },
+            "url": { "raw": "{{baseUrl}}/detail", "host": ["{{baseUrl}}"], "path": ["detail"] },
+            "description": "Creates a credential Detail."
+          }
+        },
+        {
+          "name": "Retrieve a detail",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/detail/:detailId", "host": ["{{baseUrl}}"], "path": ["detail", ":detailId"], "variable": [ { "key": "detailId", "value": "" } ] },
+            "description": "Retrieves a credential Detail by ID."
+          }
+        },
+        {
+          "name": "Update a detail",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/detail/:detailId", "host": ["{{baseUrl}}"], "path": ["detail", ":detailId"], "variable": [ { "key": "detailId", "value": "" } ] },
+            "description": "Updates a credential Detail. Details become immutable once credentials are sent."
+          }
+        },
+        {
+          "name": "Search details",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" },
+            "url": { "raw": "{{baseUrl}}/detail/search", "host": ["{{baseUrl}}"], "path": ["detail", "search"] },
+            "description": "Returns a paginated list of credential Details."
+          }
+        },
+        {
+          "name": "Search skills library",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"query\": \"project management\"\n}" },
+            "url": { "raw": "{{baseUrl}}/detail/searchSkills", "host": ["{{baseUrl}}"], "path": ["detail", "searchSkills"] },
+            "description": "Searches the skills library to attach skills to a Detail."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Email Templates",
+      "item": [
+        {
+          "name": "Retrieve an email template",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/emailTemplate/:emailTemplateId", "host": ["{{baseUrl}}"], "path": ["emailTemplate", ":emailTemplateId"], "variable": [ { "key": "emailTemplateId", "value": "" } ] },
+            "description": "Retrieves an email template by ID."
+          }
+        },
+        {
+          "name": "Delete an email template",
+          "request": {
+            "method": "DELETE",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/emailTemplate/:emailTemplateId", "host": ["{{baseUrl}}"], "path": ["emailTemplate", ":emailTemplateId"], "variable": [ { "key": "emailTemplateId", "value": "" } ] },
+            "description": "Deletes an email template."
+          }
+        },
+        {
+          "name": "Search email templates",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" },
+            "url": { "raw": "{{baseUrl}}/emailTemplate/search", "host": ["{{baseUrl}}"], "path": ["emailTemplate", "search"] },
+            "description": "Returns a paginated list of email templates."
+          }
+        },
+        {
+          "name": "Copy an email template",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"emailTemplateId\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/emailTemplate/copy", "host": ["{{baseUrl}}"], "path": ["emailTemplate", "copy"] },
+            "description": "Duplicates an existing email template."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recipients",
+      "item": [
+        {
+          "name": "Add a recipient",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\"\n}" },
+            "url": { "raw": "{{baseUrl}}/recipient", "host": ["{{baseUrl}}"], "path": ["recipient"] },
+            "description": "Adds a recipient."
+          }
+        },
+        {
+          "name": "Update recipient(s)",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"id\": \"\",\n  \"name\": \"\",\n  \"email\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/recipient", "host": ["{{baseUrl}}"], "path": ["recipient"] },
+            "description": "Updates one or more recipients."
+          }
+        },
+        {
+          "name": "Delete a recipient",
+          "request": {
+            "method": "DELETE",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/recipient/:recipientId", "host": ["{{baseUrl}}"], "path": ["recipient", ":recipientId"], "variable": [ { "key": "recipientId", "value": "" } ] },
+            "description": "Deletes a recipient."
+          }
+        },
+        {
+          "name": "Search recipients",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" },
+            "url": { "raw": "{{baseUrl}}/recipient/search", "host": ["{{baseUrl}}"], "path": ["recipient", "search"] },
+            "description": "Returns a paginated list of recipients."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attributes",
+      "item": [
+        {
+          "name": "Create an attribute",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"score\",\n  \"value\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/attribute", "host": ["{{baseUrl}}"], "path": ["attribute"] },
+            "description": "Creates a custom attribute."
+          }
+        },
+        {
+          "name": "Update an attribute",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/attribute/:attributeId", "host": ["{{baseUrl}}"], "path": ["attribute", ":attributeId"], "variable": [ { "key": "attributeId", "value": "" } ] },
+            "description": "Updates a custom attribute."
+          }
+        },
+        {
+          "name": "Delete an attribute",
+          "request": {
+            "method": "DELETE",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" } ],
+            "url": { "raw": "{{baseUrl}}/attribute/:attributeId", "host": ["{{baseUrl}}"], "path": ["attribute", ":attributeId"], "variable": [ { "key": "attributeId", "value": "" } ] },
+            "description": "Deletes a custom attribute."
+          }
+        },
+        {
+          "name": "Search attributes",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "api-version", "value": "{{apiVersion}}" }, { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20\n}" },
+            "url": { "raw": "{{baseUrl}}/attribute/search", "host": ["{{baseUrl}}"], "path": ["attribute", "search"] },
+            "description": "Returns a paginated list of custom attributes."
+          }
+        }
+      ]
+    }
+  ]
+}

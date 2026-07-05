@@ -1,0 +1,132 @@
+aid: sertifier
+name: Sertifier
+review:
+  question: Does Sertifier expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Sertifier's public developer surface is a
+    request/response REST Credential API over HTTPS (base
+    https://b2b.sertifier.com). There is no documented server-push transport -
+    no WebSocket and no Server-Sent Events - on Sertifier's own API to model.
+    Event-driven integration is described in the opposite direction: Sertifier
+    consumes inbound completion events from LMS/CRM systems and no-code tools
+    (Zapier, n8n) to trigger issuance, rather than pushing events out over a
+    streaming socket.
+findings:
+  summary: |
+    Sertifier does not publish a documented public WebSocket API. Sertifier is a
+    digital credential and certificate/badge management platform. Its developer
+    surface is a REST Credential API served at https://b2b.sertifier.com,
+    authenticated with a private API key in the `secretKey` header plus an
+    `api-version` header (current documented value 3.3), with a shared response
+    envelope ({ message, hasError, validationErrors, data, content }) and UTC
+    dates. The API models credential issuance as a Campaign (binding a Design, a
+    Detail, and an Email Template) into which recipients and credentials are
+    added (POST /campaign/addCredentials) and then published or scheduled. All
+    documented endpoints are request/response REST over HTTPS. No realtime,
+    bidirectional, or streaming WebSocket (ws:// or wss://) endpoint is
+    documented anywhere in Sertifier's Apiary reference, help center, or
+    integration guides as of the review date.
+  developerAccess: |
+    The API key is issued from the Sertifier web application under Settings >
+    API & Integrations (also referenced as Advanced > Integrations). API access
+    ships with paid plans; issuance volume is bounded by the plan's annual
+    recipient allowance rather than by a published per-request rate limit.
+    Sertifier's guidance stresses protecting the secretKey and using an
+    idempotency key (enrolment ID + campaignId) so a duplicate completion event
+    does not double-issue.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://b2b.sertifier.com
+      documented: true
+      note: Credential API. Auth via secretKey header + api-version header. All request/response.
+    - protocol: Webhook (inbound)
+      scheme: https
+      documented: true
+      note: Sertifier receives completion events from LMS/CRM and no-code tools (Zapier, n8n) to trigger issuance. Inbound to Sertifier, not an outbound streaming socket.
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events stream is documented on Sertifier's own API.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Sertifier's Credential API reference, help center, or integration guides as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://b2b.sertifier.com/Test
+    - POST   https://b2b.sertifier.com/campaign
+    - GET    https://b2b.sertifier.com/campaign/{campaignId}
+    - PUT    https://b2b.sertifier.com/campaign/{campaignId}
+    - DELETE https://b2b.sertifier.com/campaign/{campaignId}
+    - POST   https://b2b.sertifier.com/campaign/search
+    - POST   https://b2b.sertifier.com/campaign/addCredentials
+    - POST   https://b2b.sertifier.com/campaign/send
+    - POST   https://b2b.sertifier.com/campaign/schedule
+    - GET    https://b2b.sertifier.com/credential/{credentialId}
+    - PUT    https://b2b.sertifier.com/credential/{credentialId}
+    - DELETE https://b2b.sertifier.com/credential/{credentialId}
+    - POST   https://b2b.sertifier.com/credential/search
+    - POST   https://b2b.sertifier.com/credential/publish
+    - GET    https://b2b.sertifier.com/credential/generatePDFLink/{credentialId_or_certificateNo}
+    - GET    https://b2b.sertifier.com/design/{designId}
+    - DELETE https://b2b.sertifier.com/design/{designId}
+    - POST   https://b2b.sertifier.com/design/search
+    - POST   https://b2b.sertifier.com/design/copy
+    - POST   https://b2b.sertifier.com/detail
+    - GET    https://b2b.sertifier.com/detail/{detailId}
+    - PUT    https://b2b.sertifier.com/detail/{detailId}
+    - POST   https://b2b.sertifier.com/detail/search
+    - POST   https://b2b.sertifier.com/detail/searchSkills
+    - GET    https://b2b.sertifier.com/emailTemplate/{emailTemplateId}
+    - DELETE https://b2b.sertifier.com/emailTemplate/{emailTemplateId}
+    - POST   https://b2b.sertifier.com/emailTemplate/search
+    - POST   https://b2b.sertifier.com/emailTemplate/copy
+    - POST   https://b2b.sertifier.com/recipient
+    - PUT    https://b2b.sertifier.com/recipient
+    - DELETE https://b2b.sertifier.com/recipient/{recipientId}
+    - POST   https://b2b.sertifier.com/recipient/search
+    - POST   https://b2b.sertifier.com/attribute
+    - PUT    https://b2b.sertifier.com/attribute/{attributeId}
+    - DELETE https://b2b.sertifier.com/attribute/{attributeId}
+    - POST   https://b2b.sertifier.com/attribute/search
+  endpointsModeled:
+    - POST   https://b2b.sertifier.com/webhook
+  endpointsModeledNote: |
+    The /webhook operation in the OpenAPI (tag Webhooks, API
+    sertifier:sertifier-webhooks-api) is MODELED, not confirmed. Sertifier
+    documents inbound completion-event automation and no-code integrations
+    rather than a first-party outbound webhook-subscription REST resource. The
+    modeled endpoint is an honest placeholder to be verified against Sertifier
+    support before any real use.
+sources:
+  - url: https://sertifier.docs.apiary.io/
+    type: APIReference
+    note: Public Apiary reference enumerating Design, Detail, EmailTemplate, Campaign, Credential, Recipient, Attribute resources and the /Test auth check. All REST; no WebSocket.
+  - url: https://help.sertifier.com/sertifier-api-quickstart
+    type: Documentation
+    note: Quickstart for automating certificate creation via POST /campaign and POST /campaign/addCredentials; permanent credential URL in the response.
+  - url: https://help.sertifier.com/api-key-integrations
+    type: Documentation
+    note: How to obtain the API key (Settings > API & Integrations); lists LMS/CRM and no-code integrations.
+  - url: https://help.sertifier.com/how-to-connect-sertifier-with-whatsapp
+    type: Documentation
+    note: Integration guide exposing the base host https://b2b.sertifier.com, the secretKey and api-version 3.3 headers, and the addCredentials body fields.
+  - url: https://docs.sertifier.com/
+    type: Documentation
+    note: Sertifier API documentation landing page (JS-rendered).
+  - url: https://sertifier.com/pricing
+    type: Pricing
+    note: Subscription plans priced on annual recipients; API access on paid plans. No published rate limits.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists, and Sertifier's own public API is
+    request/response REST (the Credential API at https://b2b.sertifier.com).
+    No AsyncAPI document was created because there is no server-push transport
+    (WebSocket or SSE) on Sertifier's own API to model; event-driven behavior is
+    inbound (LMS/CRM and no-code tools calling Sertifier to trigger issuance).

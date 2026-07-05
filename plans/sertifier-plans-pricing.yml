@@ -1,0 +1,143 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Sertifier
+providerId: sertifier
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Digital Credentials
+- Certificates
+- Badges
+- Credentialing
+- Plans
+description: >-
+  Sertifier is sold as a subscription-based SaaS, priced primarily on the number
+  of unique recipients per year (credentials per recipient are unlimited). Public
+  sources describe a free entry tier plus paid tiers and a custom enterprise
+  plan, with annual billing offering two months free, a 20% lifetime non-profit
+  discount, and a 25% first-year startup discount. Exact numbers vary between
+  Sertifier's own pages and third-party listings (Capterra/G2), so the figures
+  below are approximate and NOT reconciled. The REST Credential API and LMS/CRM
+  integrations are made available through the account's Settings / Advanced >
+  Integrations area on paid plans; the API itself is not metered as a separate
+  line item - credential/recipient volume is the billable unit.
+notes: >-
+  Pricing figures conflict across sources (self-serve pages showed a Free /
+  Pro / Enterprise structure; third-party listings cited Basic ~$75/mo for 1,000
+  recipients and Pro ~$167/mo for 5,000). Treat all amounts as indicative and
+  verify current tiers, recipient allowances, and which plans expose the API on
+  the Sertifier pricing page during reconciliation.
+sources:
+- https://sertifier.com/pricing
+- https://info.sertifier.com/pricing
+- https://help.sertifier.com/api-key-integrations
+- https://www.capterra.com/p/229583/Sertifier/pricing/
+- https://www.g2.com/products/sertifier/pricing
+plans:
+- id: sertifier-free
+  name: Free
+  type: free
+  description: >-
+    Entry tier for evaluation and small programs, with a bounded annual recipient
+    allowance and unlimited credentials per recipient. Includes core LMS/CRM
+    integrations.
+  entries:
+  - label: Annual Recipients
+    name: free_recipients
+    type: usage
+    metric: recipients
+    limit: 250
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: '0'
+    userMultiplied: false
+  elements:
+  - name: Unlimited Credentials per Recipient
+  - name: Core Integrations (LMS, CRM)
+  - name: Verifiable Credential URLs
+- id: sertifier-basic
+  name: Basic
+  type: paid
+  description: >-
+    Paid starter tier for small credentialing teams. Third-party listings cite
+    roughly $75/month (annual billing available) for up to about 1,000 recipients
+    per year. Includes API access and integrations.
+  entries:
+  - label: Annual Recipients
+    name: basic_recipients
+    type: usage
+    metric: recipients
+    limit: 1000
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: ~$75/month (indicative; verify)
+    userMultiplied: false
+  elements:
+  - name: REST Credential API Access
+  - name: LMS and CRM Integrations
+  - name: Unlimited Credentials per Recipient
+- id: sertifier-pro
+  name: Pro
+  type: paid
+  description: >-
+    Growth tier for larger programs. Third-party listings cite roughly
+    $167/month for up to about 5,000 recipients per year. Adds branded credential
+    portal, email branding, and customer support.
+  entries:
+  - label: Annual Recipients
+    name: pro_recipients
+    type: usage
+    metric: recipients
+    limit: 5000
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: ~$167/month (indicative; verify)
+    userMultiplied: false
+  elements:
+  - name: REST Credential API Access
+  - name: Branded Credential Portal
+  - name: Email Branding
+  - name: Customer Support
+- id: sertifier-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom plan for high-volume issuers. White-labeled credential portal,
+    dedicated customer success and onboarding, custom SLAs, and security reviews.
+    Contact Sertifier for pricing.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: White-Labeled Credential Portal
+  - name: Dedicated CSM and Onboarding
+  - name: Custom SLAs and Security Reviews
+  - name: Volume Recipient Pricing
+addOns:
+- id: sertifier-advanced-support
+  name: Advanced Support Add-on
+  price: ~$100/month
+  description: Faster response times, priority handling, and personalized onboarding assistance.
+discounts:
+- name: Annual Billing
+  description: Two months free versus monthly billing.
+- name: Non-Profit
+  description: 20% lifetime discount for non-profit organizations.
+- name: Startup
+  description: 25% discount for the first year for startups.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
