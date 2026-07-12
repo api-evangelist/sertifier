@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sertifier-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: secretKey
+  type: apiKey
+  in: header
+  parameter: secretKey
+  description: Private API key obtained from the Sertifier web application under Settings >
+    API & Integrations (also referenced as Advanced > Integrations). Store it in a secrets vault;
+    never embed it in client-side JavaScript.
+  sources:
+  - openapi/sertifier-openapi.yml

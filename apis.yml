@@ -173,6 +173,10 @@ apis:
     n8n), but a first-party outbound webhook subscription REST resource is not published
     in the Credential API reference. Endpoints here are honestly modeled, not confirmed.
 common:
+- type: DomainSecurity
+  url: security/sertifier-domain-security.yml
+- type: Authentication
+  url: authentication/sertifier-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/sertifierco
 - type: Website
