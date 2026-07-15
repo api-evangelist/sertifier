@@ -173,6 +173,8 @@ apis:
     n8n), but a first-party outbound webhook subscription REST resource is not published
     in the Credential API reference. Endpoints here are honestly modeled, not confirmed.
 common:
+- type: AgenticAccess
+  url: agentic-access/sertifier-agentic-access.yml
 - type: DomainSecurity
   url: security/sertifier-domain-security.yml
 - type: Authentication
