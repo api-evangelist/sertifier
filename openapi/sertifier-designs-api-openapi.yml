@@ -1,0 +1,172 @@
+openapi: 3.0.3
+info:
+  title: Sertifier Credential Attributes Designs API
+  description: 'The Sertifier Credential API lets backend systems and LMS/CRM integrations programmatically design, issue, verify, and manage verifiable digital credentials (certificates and badges) on the Sertifier platform. A credential is issued inside a Campaign that binds three things: a visual Design, a descriptive Detail, and an Email Template used to deliver the finished credential to a Recipient. Custom Attributes are merged into the design and email at issue time. All requests are sent to the base host with a private API key in the `secretKey` header and an `api-version` header. Most responses share a common envelope ({ message, hasError, validationErrors, data, content }). All dates are UTC. Designs are authored in the Sertifier web application; the API references and duplicates them.
+
+    Endpoint paths, methods, the base host (https://b2b.sertifier.com), the `secretKey` / `api-version` headers, and the credential-issuance workflow are grounded in Sertifier''s public Apiary reference, help-center quickstart, and integration guides. Request and response bodies are minimally modeled where the public reference does not fully enumerate every field; those are marked with `x-modeled: true`.'
+  version: '3.3'
+  contact:
+    name: Sertifier
+    url: https://sertifier.com
+    email: support@sertifier.com
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://b2b.sertifier.com
+  description: Sertifier Credential API (production)
+security:
+- secretKey: []
+tags:
+- name: Designs
+  description: Visual designs applied to certificates and badges.
+paths:
+  /design/{designId}:
+    get:
+      operationId: getDesign
+      tags:
+      - Designs
+      summary: Retrieve a design
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      - $ref: '#/components/parameters/DesignId'
+      responses:
+        '200':
+          description: The requested design.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteDesign
+      tags:
+      - Designs
+      summary: Delete a design
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      - $ref: '#/components/parameters/DesignId'
+      responses:
+        '200':
+          description: The design was deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /design/search:
+    post:
+      operationId: searchDesigns
+      tags:
+      - Designs
+      summary: Search designs
+      description: Returns a paginated list of designs. Designs are authored in the web app.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: A paginated list of designs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /design/copy:
+    post:
+      operationId: copyDesign
+      tags:
+      - Designs
+      summary: Copy a design
+      description: Duplicates an existing design.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                designId:
+                  type: string
+              required:
+              - designId
+      responses:
+        '200':
+          description: The duplicated design.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: The secretKey is missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
+  parameters:
+    ApiVersion:
+      name: api-version
+      in: header
+      required: true
+      description: API version header. Current documented value is 3.3.
+      schema:
+        type: string
+        default: '3.3'
+    DesignId:
+      name: designId
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    SearchRequest:
+      type: object
+      description: Paginated search request.
+      x-modeled: true
+      properties:
+        page:
+          type: integer
+          default: 1
+        pageSize:
+          type: integer
+          default: 20
+        query:
+          type: string
+          nullable: true
+    Envelope:
+      type: object
+      description: Standard Sertifier response envelope.
+      properties:
+        message:
+          type: string
+          nullable: true
+        hasError:
+          type: boolean
+        validationErrors:
+          type: array
+          items:
+            type: string
+        data:
+          nullable: true
+          description: The operation-specific payload (object or array).
+        content:
+          nullable: true
+  securitySchemes:
+    secretKey:
+      type: apiKey
+      in: header
+      name: secretKey
+      description: Private API key obtained from the Sertifier web application under Settings > API & Integrations (also referenced as Advanced > Integrations). Store it in a secrets vault; never embed it in client-side JavaScript.

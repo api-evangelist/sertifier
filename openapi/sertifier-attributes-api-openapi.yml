@@ -1,0 +1,183 @@
+openapi: 3.0.3
+info:
+  title: Sertifier Credential Attributes API
+  description: 'The Sertifier Credential API lets backend systems and LMS/CRM integrations programmatically design, issue, verify, and manage verifiable digital credentials (certificates and badges) on the Sertifier platform. A credential is issued inside a Campaign that binds three things: a visual Design, a descriptive Detail, and an Email Template used to deliver the finished credential to a Recipient. Custom Attributes are merged into the design and email at issue time. All requests are sent to the base host with a private API key in the `secretKey` header and an `api-version` header. Most responses share a common envelope ({ message, hasError, validationErrors, data, content }). All dates are UTC. Designs are authored in the Sertifier web application; the API references and duplicates them.
+
+    Endpoint paths, methods, the base host (https://b2b.sertifier.com), the `secretKey` / `api-version` headers, and the credential-issuance workflow are grounded in Sertifier''s public Apiary reference, help-center quickstart, and integration guides. Request and response bodies are minimally modeled where the public reference does not fully enumerate every field; those are marked with `x-modeled: true`.'
+  version: '3.3'
+  contact:
+    name: Sertifier
+    url: https://sertifier.com
+    email: support@sertifier.com
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://b2b.sertifier.com
+  description: Sertifier Credential API (production)
+security:
+- secretKey: []
+tags:
+- name: Attributes
+  description: Reusable custom key/value fields merged into credentials.
+paths:
+  /attribute:
+    post:
+      operationId: createAttribute
+      tags:
+      - Attributes
+      summary: Create a custom attribute
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Attribute'
+      responses:
+        '200':
+          description: The created attribute.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /attribute/{attributeId}:
+    put:
+      operationId: updateAttribute
+      tags:
+      - Attributes
+      summary: Update a custom attribute
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      - name: attributeId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Attribute'
+      responses:
+        '200':
+          description: The updated attribute.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteAttribute
+      tags:
+      - Attributes
+      summary: Delete a custom attribute
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      - name: attributeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The attribute was deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /attribute/search:
+    post:
+      operationId: searchAttributes
+      tags:
+      - Attributes
+      summary: Search custom attributes
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: A paginated list of attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Attribute:
+      type: object
+      x-modeled: true
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        value:
+          type: string
+    SearchRequest:
+      type: object
+      description: Paginated search request.
+      x-modeled: true
+      properties:
+        page:
+          type: integer
+          default: 1
+        pageSize:
+          type: integer
+          default: 20
+        query:
+          type: string
+          nullable: true
+    Envelope:
+      type: object
+      description: Standard Sertifier response envelope.
+      properties:
+        message:
+          type: string
+          nullable: true
+        hasError:
+          type: boolean
+        validationErrors:
+          type: array
+          items:
+            type: string
+        data:
+          nullable: true
+          description: The operation-specific payload (object or array).
+        content:
+          nullable: true
+  responses:
+    Unauthorized:
+      description: The secretKey is missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
+  parameters:
+    ApiVersion:
+      name: api-version
+      in: header
+      required: true
+      description: API version header. Current documented value is 3.3.
+      schema:
+        type: string
+        default: '3.3'
+  securitySchemes:
+    secretKey:
+      type: apiKey
+      in: header
+      name: secretKey
+      description: Private API key obtained from the Sertifier web application under Settings > API & Integrations (also referenced as Advanced > Integrations). Store it in a secrets vault; never embed it in client-side JavaScript.

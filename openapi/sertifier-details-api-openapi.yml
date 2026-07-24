@@ -1,0 +1,211 @@
+openapi: 3.0.3
+info:
+  title: Sertifier Credential Attributes Details API
+  description: 'The Sertifier Credential API lets backend systems and LMS/CRM integrations programmatically design, issue, verify, and manage verifiable digital credentials (certificates and badges) on the Sertifier platform. A credential is issued inside a Campaign that binds three things: a visual Design, a descriptive Detail, and an Email Template used to deliver the finished credential to a Recipient. Custom Attributes are merged into the design and email at issue time. All requests are sent to the base host with a private API key in the `secretKey` header and an `api-version` header. Most responses share a common envelope ({ message, hasError, validationErrors, data, content }). All dates are UTC. Designs are authored in the Sertifier web application; the API references and duplicates them.
+
+    Endpoint paths, methods, the base host (https://b2b.sertifier.com), the `secretKey` / `api-version` headers, and the credential-issuance workflow are grounded in Sertifier''s public Apiary reference, help-center quickstart, and integration guides. Request and response bodies are minimally modeled where the public reference does not fully enumerate every field; those are marked with `x-modeled: true`.'
+  version: '3.3'
+  contact:
+    name: Sertifier
+    url: https://sertifier.com
+    email: support@sertifier.com
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://b2b.sertifier.com
+  description: Sertifier Credential API (production)
+security:
+- secretKey: []
+tags:
+- name: Details
+  description: Descriptive metadata (title, skills, criteria) printed on a credential.
+paths:
+  /detail:
+    post:
+      operationId: createDetail
+      tags:
+      - Details
+      summary: Create a credential detail
+      description: Creates a credential Detail - the title, description, skills, and criteria printed on a credential.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Detail'
+      responses:
+        '200':
+          description: The created detail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /detail/{detailId}:
+    get:
+      operationId: getDetail
+      tags:
+      - Details
+      summary: Retrieve a credential detail
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      - $ref: '#/components/parameters/DetailId'
+      responses:
+        '200':
+          description: The requested detail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    put:
+      operationId: updateDetail
+      tags:
+      - Details
+      summary: Update a credential detail
+      description: Updates a Detail. Details become immutable once their credentials are sent.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      - $ref: '#/components/parameters/DetailId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Detail'
+      responses:
+        '200':
+          description: The updated detail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /detail/search:
+    post:
+      operationId: searchDetails
+      tags:
+      - Details
+      summary: Search credential details
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: A paginated list of details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /detail/searchSkills:
+    post:
+      operationId: searchSkills
+      tags:
+      - Details
+      summary: Search the skills library
+      description: Searches Sertifier's skills library to attach skills to a credential detail.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersion'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: A paginated list of matching skills.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    DetailId:
+      name: detailId
+      in: path
+      required: true
+      schema:
+        type: string
+    ApiVersion:
+      name: api-version
+      in: header
+      required: true
+      description: API version header. Current documented value is 3.3.
+      schema:
+        type: string
+        default: '3.3'
+  responses:
+    Unauthorized:
+      description: The secretKey is missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
+  schemas:
+    Detail:
+      type: object
+      x-modeled: true
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        skills:
+          type: array
+          items:
+            type: string
+        criteria:
+          type: string
+    SearchRequest:
+      type: object
+      description: Paginated search request.
+      x-modeled: true
+      properties:
+        page:
+          type: integer
+          default: 1
+        pageSize:
+          type: integer
+          default: 20
+        query:
+          type: string
+          nullable: true
+    Envelope:
+      type: object
+      description: Standard Sertifier response envelope.
+      properties:
+        message:
+          type: string
+          nullable: true
+        hasError:
+          type: boolean
+        validationErrors:
+          type: array
+          items:
+            type: string
+        data:
+          nullable: true
+          description: The operation-specific payload (object or array).
+        content:
+          nullable: true
+  securitySchemes:
+    secretKey:
+      type: apiKey
+      in: header
+      name: secretKey
+      description: Private API key obtained from the Sertifier web application under Settings > API & Integrations (also referenced as Advanced > Integrations). Store it in a secrets vault; never embed it in client-side JavaScript.
