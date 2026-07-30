@@ -11,7 +11,20 @@ description: Sertifier is a digital credential and certificate/badge management 
   details, email templates, campaigns, recipients, custom attributes, and issue and
   publish credentials the instant a learner completes a course. Sertifier has issued
   more than 10 million credentials across 70+ countries.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sertifier.png
 tags:
 - Digital Credentials
 - Certificates
@@ -24,154 +37,204 @@ created: '2026-07-05'
 modified: '2026-07-05'
 specificationVersion: '0.19'
 apis:
-- aid: sertifier:sertifier-campaigns-api
-  name: Sertifier Campaigns API
-  tags:
-  - Campaigns
-  - Issuance
-  - Credentials
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://sertifier.docs.apiary.io/
-  baseURL: https://b2b.sertifier.com
-  properties:
-  - url: https://help.sertifier.com/sertifier-api-quickstart
-    type: Documentation
-  - url: https://sertifier.docs.apiary.io/
-    type: APIReference
-  - url: openapi/sertifier-openapi.yml
-    type: OpenAPI
-  description: Create, retrieve, update, delete, and search credential campaigns - the
-    container that binds a Design, a credential Detail, and an Email Template. Add
-    recipients and issue credentials into a campaign (addCredentials), then send or
-    schedule delivery. The primary programmatic path for automating certificate creation.
-- aid: sertifier:sertifier-credentials-api
-  name: Sertifier Credentials API
-  tags:
-  - Credentials
-  - Certificates
-  - Publishing
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://sertifier.docs.apiary.io/
-  baseURL: https://b2b.sertifier.com
-  properties:
-  - url: https://help.sertifier.com/credentials-complete-guide
-    type: Documentation
-  - url: https://sertifier.docs.apiary.io/
-    type: APIReference
-  - url: openapi/sertifier-openapi.yml
-    type: OpenAPI
-  description: Retrieve, update, delete, search, and publish individual issued credentials,
-    and generate a downloadable PDF link for a credential by its ID or certificate
-    number. Each published credential resolves to a permanent, verifiable credential URL.
-- aid: sertifier:sertifier-designs-api
-  name: Sertifier Designs API
-  tags:
-  - Designs
-  - Templates
-  - Branding
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://sertifier.docs.apiary.io/
-  baseURL: https://b2b.sertifier.com
-  properties:
-  - url: https://help.sertifier.com/credential-design-complete-guide
-    type: Documentation
-  - url: https://sertifier.docs.apiary.io/
-    type: APIReference
-  - url: openapi/sertifier-openapi.yml
-    type: OpenAPI
-  description: Retrieve, delete, search, and copy the visual designs applied to
-    certificates and badges. Designs are authored in the Sertifier web application;
-    the API references, duplicates, and lists them for use inside campaigns.
-- aid: sertifier:sertifier-details-api
-  name: Sertifier Credential Details API
-  tags:
-  - Details
-  - Skills
-  - Metadata
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://sertifier.docs.apiary.io/
-  baseURL: https://b2b.sertifier.com
-  properties:
-  - url: https://help.sertifier.com/credentials-complete-guide
-    type: Documentation
-  - url: https://sertifier.docs.apiary.io/
-    type: APIReference
-  - url: openapi/sertifier-openapi.yml
-    type: OpenAPI
-  description: Create, update, retrieve, and search credential Details - the descriptive
-    metadata printed on a credential (title, description, attached skills, criteria).
-    Includes a skills-library search. Details become immutable once credentials are sent.
-- aid: sertifier:sertifier-email-templates-api
-  name: Sertifier Email Templates API
-  tags:
-  - Email Templates
-  - Delivery
-  - Notifications
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://sertifier.docs.apiary.io/
-  baseURL: https://b2b.sertifier.com
-  properties:
-  - url: https://sertifier.docs.apiary.io/
-    type: APIReference
-  - url: openapi/sertifier-openapi.yml
-    type: OpenAPI
-  description: Retrieve, delete, search, and copy the email templates used to deliver
-    finished credentials to recipients. Templates are referenced by a campaign to
-    send the completed certificate or badge.
-- aid: sertifier:sertifier-recipients-api
-  name: Sertifier Recipients API
-  tags:
-  - Recipients
-  - Learners
-  - Contacts
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://sertifier.docs.apiary.io/
-  baseURL: https://b2b.sertifier.com
-  properties:
-  - url: https://help.sertifier.com/how-do-i-add-recipients
-    type: Documentation
-  - url: https://sertifier.docs.apiary.io/
-    type: APIReference
-  - url: openapi/sertifier-openapi.yml
-    type: OpenAPI
-  description: Add, update, delete, and search the recipients (learners) who receive
-    credentials. Recipients can be added individually via the API or in bulk in the
-    web application, and are the audience a campaign issues credentials to.
 - aid: sertifier:sertifier-attributes-api
   name: Sertifier Attributes API
-  tags:
-  - Attributes
-  - Custom Fields
-  - Personalization
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  description: Reusable custom key/value fields merged into credentials.
   humanURL: https://sertifier.docs.apiary.io/
   baseURL: https://b2b.sertifier.com
+  tags:
+  - Attributes
   properties:
-  - url: https://sertifier.docs.apiary.io/
-    type: APIReference
-  - url: openapi/sertifier-openapi.yml
-    type: OpenAPI
-  description: Create, update, delete, and search custom attributes - the reusable
-    key/value fields (for example score, cohort, or completion date) merged into a
-    credential Design and Email Template when issuing credentials.
+  - type: OpenAPI
+    url: openapi/sertifier-attributes-api-openapi.yml
+  - type: Documentation
+    url: https://help.sertifier.com/sertifier-api-quickstart
+  - type: APIReference
+    url: https://sertifier.docs.apiary.io/
+  - type: Documentation
+    url: https://help.sertifier.com/credentials-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/credential-design-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/how-do-i-add-recipients
+  - type: Documentation
+    url: https://help.sertifier.com/api-key-integrations
+- aid: sertifier:sertifier-authentication-api
+  name: Sertifier Authentication API
+  description: Verify API key validity.
+  humanURL: https://sertifier.docs.apiary.io/
+  baseURL: https://b2b.sertifier.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/sertifier-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://help.sertifier.com/sertifier-api-quickstart
+  - type: APIReference
+    url: https://sertifier.docs.apiary.io/
+  - type: Documentation
+    url: https://help.sertifier.com/credentials-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/credential-design-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/how-do-i-add-recipients
+  - type: Documentation
+    url: https://help.sertifier.com/api-key-integrations
+- aid: sertifier:sertifier-campaigns-api
+  name: Sertifier Campaigns API
+  description: Containers that bind a Design, Detail, and Email Template and issue credentials.
+  humanURL: https://sertifier.docs.apiary.io/
+  baseURL: https://b2b.sertifier.com
+  tags:
+  - Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/sertifier-campaigns-api-openapi.yml
+  - type: Documentation
+    url: https://help.sertifier.com/sertifier-api-quickstart
+  - type: APIReference
+    url: https://sertifier.docs.apiary.io/
+  - type: Documentation
+    url: https://help.sertifier.com/credentials-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/credential-design-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/how-do-i-add-recipients
+  - type: Documentation
+    url: https://help.sertifier.com/api-key-integrations
+- aid: sertifier:sertifier-credentials-api
+  name: Sertifier Credentials API
+  description: Individual issued credentials - retrieve, update, publish, and generate PDF links.
+  humanURL: https://sertifier.docs.apiary.io/
+  baseURL: https://b2b.sertifier.com
+  tags:
+  - Credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/sertifier-credentials-api-openapi.yml
+  - type: Documentation
+    url: https://help.sertifier.com/sertifier-api-quickstart
+  - type: APIReference
+    url: https://sertifier.docs.apiary.io/
+  - type: Documentation
+    url: https://help.sertifier.com/credentials-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/credential-design-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/how-do-i-add-recipients
+  - type: Documentation
+    url: https://help.sertifier.com/api-key-integrations
+- aid: sertifier:sertifier-designs-api
+  name: Sertifier Designs API
+  description: Visual designs applied to certificates and badges.
+  humanURL: https://sertifier.docs.apiary.io/
+  baseURL: https://b2b.sertifier.com
+  tags:
+  - Designs
+  properties:
+  - type: OpenAPI
+    url: openapi/sertifier-designs-api-openapi.yml
+  - type: Documentation
+    url: https://help.sertifier.com/sertifier-api-quickstart
+  - type: APIReference
+    url: https://sertifier.docs.apiary.io/
+  - type: Documentation
+    url: https://help.sertifier.com/credentials-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/credential-design-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/how-do-i-add-recipients
+  - type: Documentation
+    url: https://help.sertifier.com/api-key-integrations
+- aid: sertifier:sertifier-details-api
+  name: Sertifier Details API
+  description: Descriptive metadata (title, skills, criteria) printed on a credential.
+  humanURL: https://sertifier.docs.apiary.io/
+  baseURL: https://b2b.sertifier.com
+  tags:
+  - Details
+  properties:
+  - type: OpenAPI
+    url: openapi/sertifier-details-api-openapi.yml
+  - type: Documentation
+    url: https://help.sertifier.com/sertifier-api-quickstart
+  - type: APIReference
+    url: https://sertifier.docs.apiary.io/
+  - type: Documentation
+    url: https://help.sertifier.com/credentials-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/credential-design-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/how-do-i-add-recipients
+  - type: Documentation
+    url: https://help.sertifier.com/api-key-integrations
+- aid: sertifier:sertifier-email-templates-api
+  name: Sertifier Email Templates API
+  description: Templates used to deliver finished credentials to recipients.
+  humanURL: https://sertifier.docs.apiary.io/
+  baseURL: https://b2b.sertifier.com
+  tags:
+  - Email Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/sertifier-email-templates-api-openapi.yml
+  - type: Documentation
+    url: https://help.sertifier.com/sertifier-api-quickstart
+  - type: APIReference
+    url: https://sertifier.docs.apiary.io/
+  - type: Documentation
+    url: https://help.sertifier.com/credentials-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/credential-design-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/how-do-i-add-recipients
+  - type: Documentation
+    url: https://help.sertifier.com/api-key-integrations
+- aid: sertifier:sertifier-recipients-api
+  name: Sertifier Recipients API
+  description: Learners who receive credentials.
+  humanURL: https://sertifier.docs.apiary.io/
+  baseURL: https://b2b.sertifier.com
+  tags:
+  - Recipients
+  properties:
+  - type: OpenAPI
+    url: openapi/sertifier-recipients-api-openapi.yml
+  - type: Documentation
+    url: https://help.sertifier.com/sertifier-api-quickstart
+  - type: APIReference
+    url: https://sertifier.docs.apiary.io/
+  - type: Documentation
+    url: https://help.sertifier.com/credentials-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/credential-design-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/how-do-i-add-recipients
+  - type: Documentation
+    url: https://help.sertifier.com/api-key-integrations
 - aid: sertifier:sertifier-webhooks-api
   name: Sertifier Webhooks API
+  description: MODELED - inbound/outbound event automation. Not confirmed in the public reference.
+  humanURL: https://sertifier.docs.apiary.io/
+  baseURL: https://b2b.sertifier.com
   tags:
   - Webhooks
-  - Events
-  - Modeled
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://help.sertifier.com/api-key-integrations
-  baseURL: https://b2b.sertifier.com
   properties:
-  - url: https://help.sertifier.com/api-key-integrations
-    type: Documentation
-  - url: openapi/sertifier-openapi.yml
-    type: OpenAPI
-  description: MODELED - Sertifier documents inbound webhook/REST automation (for
-    example receiving LMS completion events and via no-code tools such as Zapier and
-    n8n), but a first-party outbound webhook subscription REST resource is not published
-    in the Credential API reference. Endpoints here are honestly modeled, not confirmed.
+  - type: OpenAPI
+    url: openapi/sertifier-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://help.sertifier.com/sertifier-api-quickstart
+  - type: APIReference
+    url: https://sertifier.docs.apiary.io/
+  - type: Documentation
+    url: https://help.sertifier.com/credentials-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/credential-design-complete-guide
+  - type: Documentation
+    url: https://help.sertifier.com/how-do-i-add-recipients
+  - type: Documentation
+    url: https://help.sertifier.com/api-key-integrations
 common:
 - type: AgenticAccess
   url: agentic-access/sertifier-agentic-access.yml
