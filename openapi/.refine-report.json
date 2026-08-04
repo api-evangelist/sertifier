@@ -1,0 +1,30 @@
+{
+  "provider": "sertifier",
+  "sources": [
+    "sertifier-attributes-api-openapi.yml",
+    "sertifier-authentication-api-openapi.yml",
+    "sertifier-campaigns-api-openapi.yml",
+    "sertifier-credentials-api-openapi.yml",
+    "sertifier-designs-api-openapi.yml",
+    "sertifier-details-api-openapi.yml",
+    "sertifier-email-templates-api-openapi.yml",
+    "sertifier-recipients-api-openapi.yml",
+    "sertifier-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "sertifier-attributes-api-openapi.yml",
+    "sertifier-authentication-api-openapi.yml",
+    "sertifier-campaigns-api-openapi.yml",
+    "sertifier-credentials-api-openapi.yml",
+    "sertifier-designs-api-openapi.yml",
+    "sertifier-details-api-openapi.yml",
+    "sertifier-email-templates-api-openapi.yml",
+    "sertifier-recipients-api-openapi.yml",
+    "sertifier-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
