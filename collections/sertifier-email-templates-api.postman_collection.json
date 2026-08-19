@@ -1,0 +1,711 @@
+{
+  "item": [
+    {
+      "id": "48d8b7ef-f471-4a8f-ac08-229ba666524c",
+      "name": "Email Templates",
+      "description": {
+        "content": "Templates used to deliver finished credentials to recipients.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d71af59-8307-4046-81b3-39a8713bbea4",
+          "name": "Retrieve an email template",
+          "request": {
+            "name": "Retrieve an email template",
+            "description": {},
+            "url": {
+              "path": [
+                "emailTemplate",
+                ":emailTemplateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "emailTemplateId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52156fa9-96c4-44c8-9d23-09390d1032ff",
+              "name": "The requested email template.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emailTemplate",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40769c9d-170f-4916-9716-163add203be3",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emailTemplate",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2256a35-fe58-423e-9649-725edb80a006",
+          "name": "Delete an email template",
+          "request": {
+            "name": "Delete an email template",
+            "description": {},
+            "url": {
+              "path": [
+                "emailTemplate",
+                ":emailTemplateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "emailTemplateId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d0c7dda-4a03-4d4e-be6f-9cd68ec2d3dd",
+              "name": "The email template was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emailTemplate",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75c589dc-50c6-4339-bff9-9802e28edf41",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emailTemplate",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "613025bf-db24-4155-91e6-a3e968e48179",
+          "name": "Search email templates",
+          "request": {
+            "name": "Search email templates",
+            "description": {},
+            "url": {
+              "path": [
+                "emailTemplate",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f8d1482-999e-4652-925f-18f5acad6460",
+              "name": "A paginated list of email templates.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emailTemplate",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "deeb3a9e-57b6-48fc-8dd7-e4f1bff5c5a0",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emailTemplate",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16a215a1-0b7f-46e7-98ec-b2f96ebe86cd",
+          "name": "Copy an email template",
+          "request": {
+            "name": "Copy an email template",
+            "description": {},
+            "url": {
+              "path": [
+                "emailTemplate",
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailTemplateId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "217f177a-e1ef-4149-88ce-7a4ff8a8a39f",
+              "name": "The duplicated email template.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emailTemplate",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplateId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9df45002-934b-4230-b302-4fd33f42a7e2",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emailTemplate",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplateId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://b2b.sertifier.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "secretKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "67b964de-a9f0-4c8d-ad16-5286d15fc832",
+    "name": "Sertifier Credential Attributes Email Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sertifier Credential API lets backend systems and LMS/CRM integrations programmatically design, issue, verify, and manage verifiable digital credentials (certificates and badges) on the Sertifier platform. A credential is issued inside a Campaign that binds three things: a visual Design, a descriptive Detail, and an Email Template used to deliver the finished credential to a Recipient. Custom Attributes are merged into the design and email at issue time. All requests are sent to the base host with a private API key in the `secretKey` header and an `api-version` header. Most responses share a common envelope ({ message, hasError, validationErrors, data, content }). All dates are UTC. Designs are authored in the Sertifier web application; the API references and duplicates them.\nEndpoint paths, methods, the base host (https://b2b.sertifier.com), the `secretKey` / `api-version` headers, and the credential-issuance workflow are grounded in Sertifier's public Apiary reference, help-center quickstart, and integration guides. Request and response bodies are minimally modeled where the public reference does not fully enumerate every field; those are marked with `x-modeled: true`.\n\nContact Support:\n Name: Sertifier\n Email: support@sertifier.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sertifier Credential Attributes Email Templates API",
+    "version": "3.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "secretKey",
+      "value": "{{secretKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Email Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve an email template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://b2b.sertifier.com/emailTemplate/:emailTemplateId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "emailTemplateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an email template"
+        },
+        {
+          "info": {
+            "name": "Delete an email template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/emailTemplate/:emailTemplateId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "emailTemplateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an email template"
+        },
+        {
+          "info": {
+            "name": "Search email templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/emailTemplate/search",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search email templates"
+        },
+        {
+          "info": {
+            "name": "Copy an email template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/emailTemplate/copy",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy an email template"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

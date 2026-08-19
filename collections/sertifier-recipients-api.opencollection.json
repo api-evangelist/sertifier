@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sertifier Credential Attributes Recipients API",
+    "version": "3.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "secretKey",
+      "value": "{{secretKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recipients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/recipient",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a recipient"
+        },
+        {
+          "info": {
+            "name": "Update recipient(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://b2b.sertifier.com/recipient",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update recipient(s)"
+        },
+        {
+          "info": {
+            "name": "Delete a recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/recipient/:recipientId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "recipientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a recipient"
+        },
+        {
+          "info": {
+            "name": "Search recipients",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/recipient/search",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search recipients"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

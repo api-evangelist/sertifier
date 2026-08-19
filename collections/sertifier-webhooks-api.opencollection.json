@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sertifier Credential Attributes Webhooks API",
+    "version": "3.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "secretKey",
+      "value": "{{secretKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a webhook subscription (MODELED)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/webhook",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED, NOT CONFIRMED. A first-party outbound webhook subscription resource is not published in Sertifier's Credential API reference as of the review date. Sertifier documents receiving inbound completion events and no-code automation (Zapier, n8n) rather than a documented REST webhook-subscription endpoint. This operation is included as an honest placeholder and should be verified before use."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

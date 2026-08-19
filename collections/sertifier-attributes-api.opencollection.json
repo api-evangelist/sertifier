@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sertifier Credential Attributes API",
+    "version": "3.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "secretKey",
+      "value": "{{secretKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attributes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a custom attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/attribute",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom attribute"
+        },
+        {
+          "info": {
+            "name": "Update a custom attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://b2b.sertifier.com/attribute/:attributeId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "attributeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a custom attribute"
+        },
+        {
+          "info": {
+            "name": "Delete a custom attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/attribute/:attributeId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "attributeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a custom attribute"
+        },
+        {
+          "info": {
+            "name": "Search custom attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/attribute/search",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search custom attributes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

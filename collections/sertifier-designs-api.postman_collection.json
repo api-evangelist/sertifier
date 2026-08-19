@@ -1,0 +1,717 @@
+{
+  "item": [
+    {
+      "id": "d7d441de-a9de-4228-a3ac-7f1acad630c0",
+      "name": "Designs",
+      "description": {
+        "content": "Visual designs applied to certificates and badges.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ec789849-1b54-4b84-9123-899e4e986e0f",
+          "name": "Retrieve a design",
+          "request": {
+            "name": "Retrieve a design",
+            "description": {},
+            "url": {
+              "path": [
+                "design",
+                ":designId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "designId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a22bf45-e356-490c-80c4-e8a5b5e7370d",
+              "name": "The requested design.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "design",
+                    ":designId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "designId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5704a113-f11d-4cad-97e2-b9fe7497d77a",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "design",
+                    ":designId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "designId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39ff362d-8b44-4878-b415-e8210d1fcd14",
+          "name": "Delete a design",
+          "request": {
+            "name": "Delete a design",
+            "description": {},
+            "url": {
+              "path": [
+                "design",
+                ":designId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "designId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b305c0fa-b819-42a2-add0-b2f4894037b9",
+              "name": "The design was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "design",
+                    ":designId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "designId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0081e9d2-1a8f-42f5-baa1-ec267eae0d0b",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "design",
+                    ":designId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "designId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7ca2c5b-4ae9-4433-8064-37363ff77eb7",
+          "name": "Search designs",
+          "request": {
+            "name": "Search designs",
+            "description": {
+              "content": "Returns a paginated list of designs. Designs are authored in the web app.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "design",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89fbcb80-969b-4b2c-9390-406117d77ff8",
+              "name": "A paginated list of designs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "design",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26cd3d42-390d-4aa8-b9ad-81c4214799e5",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "design",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b0ddccc-f43f-4285-9208-3e9f01626ff6",
+          "name": "Copy a design",
+          "request": {
+            "name": "Copy a design",
+            "description": {
+              "content": "Duplicates an existing design.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "design",
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"designId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9615ad49-76a4-4225-8d60-9da70a346893",
+              "name": "The duplicated design.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "design",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"designId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d142b08-1f3e-4046-bb5e-cd87c556f5cb",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "design",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"designId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://b2b.sertifier.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "secretKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "33cf26f3-3b6f-47c7-8b5c-dabaff2f9d68",
+    "name": "Sertifier Credential Attributes Designs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sertifier Credential API lets backend systems and LMS/CRM integrations programmatically design, issue, verify, and manage verifiable digital credentials (certificates and badges) on the Sertifier platform. A credential is issued inside a Campaign that binds three things: a visual Design, a descriptive Detail, and an Email Template used to deliver the finished credential to a Recipient. Custom Attributes are merged into the design and email at issue time. All requests are sent to the base host with a private API key in the `secretKey` header and an `api-version` header. Most responses share a common envelope ({ message, hasError, validationErrors, data, content }). All dates are UTC. Designs are authored in the Sertifier web application; the API references and duplicates them.\nEndpoint paths, methods, the base host (https://b2b.sertifier.com), the `secretKey` / `api-version` headers, and the credential-issuance workflow are grounded in Sertifier's public Apiary reference, help-center quickstart, and integration guides. Request and response bodies are minimally modeled where the public reference does not fully enumerate every field; those are marked with `x-modeled: true`.\n\nContact Support:\n Name: Sertifier\n Email: support@sertifier.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,914 @@
+{
+  "item": [
+    {
+      "id": "62173cad-5346-41ca-829c-951ea091a271",
+      "name": "Details",
+      "description": {
+        "content": "Descriptive metadata (title, skills, criteria) printed on a credential.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c35355a2-01cf-49de-a2a6-d441fdb40aab",
+          "name": "Create a credential detail",
+          "request": {
+            "name": "Create a credential detail",
+            "description": {
+              "content": "Creates a credential Detail - the title, description, skills, and criteria printed on a credential.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"skills\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"criteria\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb3799ee-b9b5-41a8-bbf1-5527180dca36",
+              "name": "The created detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"skills\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"criteria\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19ef1de1-3ef6-464f-9368-4a8f537e19bd",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"skills\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"criteria\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cedacedd-fc3f-4cee-bff6-4657259106de",
+          "name": "Retrieve a credential detail",
+          "request": {
+            "name": "Retrieve a credential detail",
+            "description": {},
+            "url": {
+              "path": [
+                "detail",
+                ":detailId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "detailId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "495acd59-d7a1-4910-84b5-8d640f3398af",
+              "name": "The requested detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detail",
+                    ":detailId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detailId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c92704a2-87f6-45d5-9a0d-67483e1d28cd",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detail",
+                    ":detailId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detailId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c58bfb45-b5c3-42b1-a410-8dd8ca728c98",
+          "name": "Update a credential detail",
+          "request": {
+            "name": "Update a credential detail",
+            "description": {
+              "content": "Updates a Detail. Details become immutable once their credentials are sent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "detail",
+                ":detailId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "detailId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"skills\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"criteria\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "084d4870-fd33-4a55-b1d0-c7583ca55ed6",
+              "name": "The updated detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detail",
+                    ":detailId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detailId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"skills\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"criteria\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7aa77716-743d-4b99-a9d3-be548cfa0e2b",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detail",
+                    ":detailId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detailId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"skills\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"criteria\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "627dffb0-2e38-4fe0-89e8-a9c6f63da7d2",
+          "name": "Search credential details",
+          "request": {
+            "name": "Search credential details",
+            "description": {},
+            "url": {
+              "path": [
+                "detail",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d347cfb5-008d-498c-8543-8d0cde284a8c",
+              "name": "A paginated list of details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detail",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b88e8eb-5c49-4d8c-88e7-c962a2ebb313",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detail",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91971444-36ab-4fbf-b043-4e6a87573f94",
+          "name": "Search the skills library",
+          "request": {
+            "name": "Search the skills library",
+            "description": {
+              "content": "Searches Sertifier's skills library to attach skills to a credential detail.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "detail",
+                "searchSkills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a9733aa-6751-41c0-8594-47ee1ad307e4",
+              "name": "A paginated list of matching skills.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detail",
+                    "searchSkills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8530346-05c2-49ca-b829-32ce4d6f7837",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detail",
+                    "searchSkills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": true,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://b2b.sertifier.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "secretKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "99dd4fc5-a590-47bd-9431-f7e8fd41bf39",
+    "name": "Sertifier Credential Attributes Details API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sertifier Credential API lets backend systems and LMS/CRM integrations programmatically design, issue, verify, and manage verifiable digital credentials (certificates and badges) on the Sertifier platform. A credential is issued inside a Campaign that binds three things: a visual Design, a descriptive Detail, and an Email Template used to deliver the finished credential to a Recipient. Custom Attributes are merged into the design and email at issue time. All requests are sent to the base host with a private API key in the `secretKey` header and an `api-version` header. Most responses share a common envelope ({ message, hasError, validationErrors, data, content }). All dates are UTC. Designs are authored in the Sertifier web application; the API references and duplicates them.\nEndpoint paths, methods, the base host (https://b2b.sertifier.com), the `secretKey` / `api-version` headers, and the credential-issuance workflow are grounded in Sertifier's public Apiary reference, help-center quickstart, and integration guides. Request and response bodies are minimally modeled where the public reference does not fully enumerate every field; those are marked with `x-modeled: true`.\n\nContact Support:\n Name: Sertifier\n Email: support@sertifier.com",
+      "type": "text/plain"
+    }
+  }
+}

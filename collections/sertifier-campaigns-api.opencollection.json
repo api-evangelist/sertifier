@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sertifier Credential Attributes Campaigns API",
+    "version": "3.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "secretKey",
+      "value": "{{secretKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/campaign",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a credential campaign, referencing a Design ID, a Detail ID, and an Email Template ID. Returns the created campaign including its campaignId, which is used to issue credentials."
+        },
+        {
+          "info": {
+            "name": "Retrieve a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://b2b.sertifier.com/campaign/:campaignId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a campaign"
+        },
+        {
+          "info": {
+            "name": "Update a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://b2b.sertifier.com/campaign/:campaignId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a campaign"
+        },
+        {
+          "info": {
+            "name": "Delete a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/campaign/:campaignId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a campaign"
+        },
+        {
+          "info": {
+            "name": "Search campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/campaign/search",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a paginated list of campaigns matching the search filters."
+        },
+        {
+          "info": {
+            "name": "Add / issue credentials to a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/campaign/addCredentials",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Issues one or more credentials into a campaign. Each credential references the campaignId and a recipient (name + email) plus optional custom attributes, external ID, issue date, and publish flags. Set quickPublish=true to publish immediately. Use an idempotency check on (enrolment ID + campaignId) if your source event can fire more than once. The response includes the permanent, verifiable credential URL."
+        },
+        {
+          "info": {
+            "name": "Publish / send a campaign's credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/campaign/send",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publishes the credentials in a campaign and sends delivery emails."
+        },
+        {
+          "info": {
+            "name": "Schedule credential distribution",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/campaign/schedule",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Schedules a campaign's credential distribution at a future UTC time."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

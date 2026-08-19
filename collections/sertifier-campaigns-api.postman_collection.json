@@ -1,0 +1,1419 @@
+{
+  "item": [
+    {
+      "id": "4584b6b4-0e07-4347-8170-b0a931a024ab",
+      "name": "Campaigns",
+      "description": {
+        "content": "Containers that bind a Design, Detail, and Email Template and issue credentials.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34022d55-8c5b-48ce-9037-50dfccd86f43",
+          "name": "Create a campaign",
+          "request": {
+            "name": "Create a campaign",
+            "description": {
+              "content": "Creates a credential campaign, referencing a Design ID, a Detail ID, and an Email Template ID. Returns the created campaign including its campaignId, which is used to issue credentials.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"designId\": \"<string>\",\n  \"emailTemplateId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"detailId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9edeb356-e561-4ce3-9d48-26415196c991",
+              "name": "The created campaign.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"designId\": \"<string>\",\n  \"emailTemplateId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"detailId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "310388a0-5049-4cd9-9618-bfb9b6024f72",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"designId\": \"<string>\",\n  \"emailTemplateId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"detailId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea64c3f9-a05b-4575-8eeb-1c8edc6950a3",
+          "name": "Retrieve a campaign",
+          "request": {
+            "name": "Retrieve a campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "campaign",
+                ":campaignId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaignId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e866492-8efc-4793-9977-a3627031c020",
+              "name": "The requested campaign.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc3d8c62-7fc5-4abe-b318-185d3cce6ba6",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a96e7506-0511-4b2c-bb0a-3ad9ee4a566e",
+          "name": "Update a campaign",
+          "request": {
+            "name": "Update a campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "campaign",
+                ":campaignId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaignId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"designId\": \"<string>\",\n  \"emailTemplateId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"detailId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be3d9d38-f5e1-48db-9cd9-9caa705891dc",
+              "name": "The updated campaign.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"designId\": \"<string>\",\n  \"emailTemplateId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"detailId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1f5d641-8e3f-4b73-a756-b41656a05e1d",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"designId\": \"<string>\",\n  \"emailTemplateId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"detailId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fdcaf4b-4dc0-49c2-a41a-aa750c81398e",
+          "name": "Delete a campaign",
+          "request": {
+            "name": "Delete a campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "campaign",
+                ":campaignId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaignId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "509a7886-2bb7-41fd-b2af-a4d14651a7f3",
+              "name": "The campaign was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "953dd1c6-38c6-4f39-bd26-4f7a943d300f",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21af1e19-97e3-4575-8cdc-05459b18c36e",
+          "name": "Search campaigns",
+          "request": {
+            "name": "Search campaigns",
+            "description": {
+              "content": "Returns a paginated list of campaigns matching the search filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaign",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e75829e-1b9c-4a5e-8993-500e5be60ef4",
+              "name": "A paginated list of campaigns.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdcae2e3-ae0a-4c96-b633-6af6cb1b9ea3",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29de994f-e9b0-4272-8873-713a657a8105",
+          "name": "Add / issue credentials to a campaign",
+          "request": {
+            "name": "Add / issue credentials to a campaign",
+            "description": {
+              "content": "Issues one or more credentials into a campaign. Each credential references the campaignId and a recipient (name + email) plus optional custom attributes, external ID, issue date, and publish flags. Set quickPublish=true to publish immediately. Use an idempotency check on (enrolment ID + campaignId) if your source event can fire more than once. The response includes the permanent, verifiable credential URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaign",
+                "addCredentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"campaignId\": \"<string>\",\n  \"credentials\": [\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"issueDate\": \"<date>\",\n      \"quickPublish\": \"<boolean>\",\n      \"dontSendEmail\": \"<boolean>\",\n      \"externalId\": \"<string>\",\n      \"updateExistingCredentials\": \"<boolean>\",\n      \"attributes\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"issueDate\": \"<date>\",\n      \"quickPublish\": \"<boolean>\",\n      \"dontSendEmail\": \"<boolean>\",\n      \"externalId\": \"<string>\",\n      \"updateExistingCredentials\": \"<boolean>\",\n      \"attributes\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "398998c2-c18a-4f89-8d63-8e4ef93f2d1b",
+              "name": "The issued credentials, including permanent credential URLs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    "addCredentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"campaignId\": \"<string>\",\n  \"credentials\": [\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"issueDate\": \"<date>\",\n      \"quickPublish\": \"<boolean>\",\n      \"dontSendEmail\": \"<boolean>\",\n      \"externalId\": \"<string>\",\n      \"updateExistingCredentials\": \"<boolean>\",\n      \"attributes\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"issueDate\": \"<date>\",\n      \"quickPublish\": \"<boolean>\",\n      \"dontSendEmail\": \"<boolean>\",\n      \"externalId\": \"<string>\",\n      \"updateExistingCredentials\": \"<boolean>\",\n      \"attributes\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4763615-03a4-4a04-9ea5-cc867142f5ce",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    "addCredentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"campaignId\": \"<string>\",\n  \"credentials\": [\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"issueDate\": \"<date>\",\n      \"quickPublish\": \"<boolean>\",\n      \"dontSendEmail\": \"<boolean>\",\n      \"externalId\": \"<string>\",\n      \"updateExistingCredentials\": \"<boolean>\",\n      \"attributes\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"issueDate\": \"<date>\",\n      \"quickPublish\": \"<boolean>\",\n      \"dontSendEmail\": \"<boolean>\",\n      \"externalId\": \"<string>\",\n      \"updateExistingCredentials\": \"<boolean>\",\n      \"attributes\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c4d5886-fb8b-4e68-8072-948a5d6f4fc6",
+          "name": "Publish / send a campaign's credentials",
+          "request": {
+            "name": "Publish / send a campaign's credentials",
+            "description": {
+              "content": "Publishes the credentials in a campaign and sends delivery emails.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaign",
+                "send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"campaignId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7a3795d-be17-4570-8111-0ecfaac5d573",
+              "name": "The campaign's credentials were published.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6775190-c60a-412f-8e76-a2e7072a25a7",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ef93d18-a156-4a80-8099-b2c655e9b2b4",
+          "name": "Schedule credential distribution",
+          "request": {
+            "name": "Schedule credential distribution",
+            "description": {
+              "content": "Schedules a campaign's credential distribution at a future UTC time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaign",
+                "schedule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version header. Current documented value is 3.3.",
+                "key": "api-version",
+                "value": "3.3"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"campaignId\": \"<string>\",\n  \"scheduleDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db0ed94f-a8f7-48bf-9702-30d5281e1d6e",
+              "name": "The campaign distribution was scheduled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"campaignId\": \"<string>\",\n  \"scheduleDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3090831-980d-44cc-b59a-62e97b7c0297",
+              "name": "The secretKey is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaign",
+                    "schedule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "secretKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version header. Current documented value is 3.3.",
+                    "key": "api-version",
+                    "value": "3.3"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"campaignId\": \"<string>\",\n  \"scheduleDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"hasError\": false,\n  \"validationErrors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {},\n  \"content\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://b2b.sertifier.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "secretKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2b514d56-3399-4c6e-a987-4f2623e3b07f",
+    "name": "Sertifier Credential Attributes Campaigns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sertifier Credential API lets backend systems and LMS/CRM integrations programmatically design, issue, verify, and manage verifiable digital credentials (certificates and badges) on the Sertifier platform. A credential is issued inside a Campaign that binds three things: a visual Design, a descriptive Detail, and an Email Template used to deliver the finished credential to a Recipient. Custom Attributes are merged into the design and email at issue time. All requests are sent to the base host with a private API key in the `secretKey` header and an `api-version` header. Most responses share a common envelope ({ message, hasError, validationErrors, data, content }). All dates are UTC. Designs are authored in the Sertifier web application; the API references and duplicates them.\nEndpoint paths, methods, the base host (https://b2b.sertifier.com), the `secretKey` / `api-version` headers, and the credential-issuance workflow are grounded in Sertifier's public Apiary reference, help-center quickstart, and integration guides. Request and response bodies are minimally modeled where the public reference does not fully enumerate every field; those are marked with `x-modeled: true`.\n\nContact Support:\n Name: Sertifier\n Email: support@sertifier.com",
+      "type": "text/plain"
+    }
+  }
+}

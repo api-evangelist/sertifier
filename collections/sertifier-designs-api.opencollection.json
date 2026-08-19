@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sertifier Credential Attributes Designs API",
+    "version": "3.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "secretKey",
+      "value": "{{secretKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Designs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a design",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://b2b.sertifier.com/design/:designId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "designId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a design"
+        },
+        {
+          "info": {
+            "name": "Delete a design",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://b2b.sertifier.com/design/:designId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "designId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a design"
+        },
+        {
+          "info": {
+            "name": "Search designs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/design/search",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a paginated list of designs. Designs are authored in the web app."
+        },
+        {
+          "info": {
+            "name": "Copy a design",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/design/copy",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Duplicates an existing design."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sertifier Credential Attributes Details API",
+    "version": "3.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "secretKey",
+      "value": "{{secretKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Details",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a credential detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/detail",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a credential Detail - the title, description, skills, and criteria printed on a credential."
+        },
+        {
+          "info": {
+            "name": "Retrieve a credential detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://b2b.sertifier.com/detail/:detailId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "detailId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a credential detail"
+        },
+        {
+          "info": {
+            "name": "Update a credential detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://b2b.sertifier.com/detail/:detailId",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "detailId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a Detail. Details become immutable once their credentials are sent."
+        },
+        {
+          "info": {
+            "name": "Search credential details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/detail/search",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search credential details"
+        },
+        {
+          "info": {
+            "name": "Search the skills library",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://b2b.sertifier.com/detail/searchSkills",
+            "headers": [
+              {
+                "name": "api-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches Sertifier's skills library to attach skills to a credential detail."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
