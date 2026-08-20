@@ -219,6 +219,8 @@ apis:
   humanURL: https://sertifier.docs.apiary.io/
   baseURL: https://b2b.sertifier.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
