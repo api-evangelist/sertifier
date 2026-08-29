@@ -250,6 +250,9 @@ apis:
   - type: Documentation
     url: https://help.sertifier.com/api-key-integrations
 common:
+- type: CapabilityMap
+  url: capabilities/sertifier-capability-edges.yml
+  name: Sertifier Business Capability Map
 - type: AgenticAccess
   url: agentic-access/sertifier-agentic-access.yml
 - type: DomainSecurity
