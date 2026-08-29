@@ -11,6 +11,18 @@ description: Sertifier is a digital credential and certificate/badge management 
   details, email templates, campaigns, recipients, custom attributes, and issue and
   publish credentials the instant a learner completes a course. Sertifier has issued
   more than 10 million credentials across 70+ countries.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
