@@ -1,15 +1,7 @@
 {
   "provider": "sertifier",
   "sources": [
-    "sertifier-attributes-api-openapi.yml",
-    "sertifier-authentication-api-openapi.yml",
-    "sertifier-campaigns-api-openapi.yml",
-    "sertifier-credentials-api-openapi.yml",
-    "sertifier-designs-api-openapi.yml",
-    "sertifier-details-api-openapi.yml",
-    "sertifier-email-templates-api-openapi.yml",
-    "sertifier-recipients-api-openapi.yml",
-    "sertifier-webhooks-api-openapi.yml"
+    "_original/sertifier-openapi.yml"
   ],
   "outputs": [
     "sertifier-attributes-api-openapi.yml",
@@ -25,6 +17,20 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sertifier-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "sertifier-attributes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sertifier-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sertifier-campaigns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sertifier-credentials-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sertifier-designs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sertifier-details-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sertifier-email-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sertifier-recipients-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sertifier-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
