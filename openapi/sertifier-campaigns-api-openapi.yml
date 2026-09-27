@@ -212,22 +212,54 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    ApiVersion:
-      name: api-version
-      in: header
-      required: true
-      description: API version header. Current documented value is 3.3.
-      schema:
-        type: string
-        default: '3.3'
-    CampaignId:
-      name: campaignId
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
+    AddCredentialsRequest:
+      type: object
+      properties:
+        campaignId:
+          type: string
+          description: The campaign container to issue credentials into.
+        credentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/CredentialInput'
+      required:
+      - campaignId
+      - credentials
+    Envelope:
+      type: object
+      description: Standard Sertifier response envelope.
+      properties:
+        message:
+          type:
+          - string
+          - 'null'
+        hasError:
+          type: boolean
+        validationErrors:
+          type: array
+          items:
+            type: string
+        data:
+          description: The operation-specific payload (object or array).
+        content: {}
+    CampaignCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        designId:
+          type: string
+          description: The Design applied to credentials issued in this campaign.
+        detailId:
+          type: string
+          description: The credential Detail printed on the credential.
+        emailTemplateId:
+          type: string
+          description: The Email Template used to deliver the credential.
+      required:
+      - designId
+      - emailTemplateId
     SearchRequest:
       type: object
       description: Paginated search request.
@@ -282,53 +314,21 @@ components:
       required:
       - name
       - email
-    AddCredentialsRequest:
-      type: object
-      properties:
-        campaignId:
-          type: string
-          description: The campaign container to issue credentials into.
-        credentials:
-          type: array
-          items:
-            $ref: '#/components/schemas/CredentialInput'
-      required:
-      - campaignId
-      - credentials
-    Envelope:
-      type: object
-      description: Standard Sertifier response envelope.
-      properties:
-        message:
-          type:
-          - string
-          - 'null'
-        hasError:
-          type: boolean
-        validationErrors:
-          type: array
-          items:
-            type: string
-        data:
-          description: The operation-specific payload (object or array).
-        content: {}
-    CampaignCreate:
-      type: object
-      properties:
-        name:
-          type: string
-        designId:
-          type: string
-          description: The Design applied to credentials issued in this campaign.
-        detailId:
-          type: string
-          description: The credential Detail printed on the credential.
-        emailTemplateId:
-          type: string
-          description: The Email Template used to deliver the credential.
-      required:
-      - designId
-      - emailTemplateId
+  parameters:
+    ApiVersion:
+      name: api-version
+      in: header
+      required: true
+      description: API version header. Current documented value is 3.3.
+      schema:
+        type: string
+        default: '3.3'
+    CampaignId:
+      name: campaignId
+      in: path
+      required: true
+      schema:
+        type: string
   responses:
     Unauthorized:
       description: The secretKey is missing or invalid.

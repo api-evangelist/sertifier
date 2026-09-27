@@ -124,6 +124,23 @@ components:
         type: string
         default: '3.3'
   schemas:
+    Envelope:
+      type: object
+      description: Standard Sertifier response envelope.
+      properties:
+        message:
+          type:
+          - string
+          - 'null'
+        hasError:
+          type: boolean
+        validationErrors:
+          type: array
+          items:
+            type: string
+        data:
+          description: The operation-specific payload (object or array).
+        content: {}
     SearchRequest:
       type: object
       description: Paginated search request.
@@ -149,23 +166,6 @@ components:
           type: string
         value:
           type: string
-    Envelope:
-      type: object
-      description: Standard Sertifier response envelope.
-      properties:
-        message:
-          type:
-          - string
-          - 'null'
-        hasError:
-          type: boolean
-        validationErrors:
-          type: array
-          items:
-            type: string
-        data:
-          description: The operation-specific payload (object or array).
-        content: {}
   responses:
     Unauthorized:
       description: The secretKey is missing or invalid.

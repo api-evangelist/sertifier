@@ -119,21 +119,6 @@ components:
         type: string
         default: '3.3'
   schemas:
-    SearchRequest:
-      type: object
-      description: Paginated search request.
-      x-modeled: true
-      properties:
-        page:
-          type: integer
-          default: 1
-        pageSize:
-          type: integer
-          default: 20
-        query:
-          type:
-          - string
-          - 'null'
     Recipient:
       type: object
       x-modeled: true
@@ -162,6 +147,21 @@ components:
         data:
           description: The operation-specific payload (object or array).
         content: {}
+    SearchRequest:
+      type: object
+      description: Paginated search request.
+      x-modeled: true
+      properties:
+        page:
+          type: integer
+          default: 1
+        pageSize:
+          type: integer
+          default: 20
+        query:
+          type:
+          - string
+          - 'null'
   responses:
     Unauthorized:
       description: The secretKey is missing or invalid.
