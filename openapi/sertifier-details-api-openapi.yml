@@ -132,21 +132,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    DetailId:
-      name: detailId
-      in: path
-      required: true
-      schema:
-        type: string
-    ApiVersion:
-      name: api-version
-      in: header
-      required: true
-      description: API version header. Current documented value is 3.3.
-      schema:
-        type: string
-        default: '3.3'
   schemas:
     Envelope:
       type: object
@@ -165,6 +150,20 @@ components:
         data:
           description: The operation-specific payload (object or array).
         content: {}
+    Detail:
+      type: object
+      x-modeled: true
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        skills:
+          type: array
+          items:
+            type: string
+        criteria:
+          type: string
     SearchRequest:
       type: object
       description: Paginated search request.
@@ -180,20 +179,21 @@ components:
           type:
           - string
           - 'null'
-    Detail:
-      type: object
-      x-modeled: true
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        skills:
-          type: array
-          items:
-            type: string
-        criteria:
-          type: string
+  parameters:
+    DetailId:
+      name: detailId
+      in: path
+      required: true
+      schema:
+        type: string
+    ApiVersion:
+      name: api-version
+      in: header
+      required: true
+      description: API version header. Current documented value is 3.3.
+      schema:
+        type: string
+        default: '3.3'
   responses:
     Unauthorized:
       description: The secretKey is missing or invalid.

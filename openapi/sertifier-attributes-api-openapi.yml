@@ -114,15 +114,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    ApiVersion:
-      name: api-version
-      in: header
-      required: true
-      description: API version header. Current documented value is 3.3.
-      schema:
-        type: string
-        default: '3.3'
   schemas:
     Envelope:
       type: object
@@ -173,6 +164,15 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Envelope'
+  parameters:
+    ApiVersion:
+      name: api-version
+      in: header
+      required: true
+      description: API version header. Current documented value is 3.3.
+      schema:
+        type: string
+        default: '3.3'
   securitySchemes:
     secretKey:
       type: apiKey

@@ -213,19 +213,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    AddCredentialsRequest:
-      type: object
-      properties:
-        campaignId:
-          type: string
-          description: The campaign container to issue credentials into.
-        credentials:
-          type: array
-          items:
-            $ref: '#/components/schemas/CredentialInput'
-      required:
-      - campaignId
-      - credentials
     Envelope:
       type: object
       description: Standard Sertifier response envelope.
@@ -260,6 +247,19 @@ components:
       required:
       - designId
       - emailTemplateId
+    AddCredentialsRequest:
+      type: object
+      properties:
+        campaignId:
+          type: string
+          description: The campaign container to issue credentials into.
+        credentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/CredentialInput'
+      required:
+      - campaignId
+      - credentials
     SearchRequest:
       type: object
       description: Paginated search request.
