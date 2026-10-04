@@ -51,18 +51,6 @@ components:
           schema:
             $ref: '#/components/schemas/Envelope'
   schemas:
-    Webhook:
-      type: object
-      x-modeled: true
-      description: MODELED - not confirmed in the public Sertifier API reference.
-      properties:
-        url:
-          type: string
-          format: uri
-        events:
-          type: array
-          items:
-            type: string
     Envelope:
       type: object
       description: Standard Sertifier response envelope.
@@ -80,6 +68,18 @@ components:
         data:
           description: The operation-specific payload (object or array).
         content: {}
+    Webhook:
+      type: object
+      x-modeled: true
+      description: MODELED - not confirmed in the public Sertifier API reference.
+      properties:
+        url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
   parameters:
     ApiVersion:
       name: api-version

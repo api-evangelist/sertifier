@@ -132,53 +132,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  schemas:
-    Envelope:
-      type: object
-      description: Standard Sertifier response envelope.
-      properties:
-        message:
-          type:
-          - string
-          - 'null'
-        hasError:
-          type: boolean
-        validationErrors:
-          type: array
-          items:
-            type: string
-        data:
-          description: The operation-specific payload (object or array).
-        content: {}
-    Detail:
-      type: object
-      x-modeled: true
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        skills:
-          type: array
-          items:
-            type: string
-        criteria:
-          type: string
-    SearchRequest:
-      type: object
-      description: Paginated search request.
-      x-modeled: true
-      properties:
-        page:
-          type: integer
-          default: 1
-        pageSize:
-          type: integer
-          default: 20
-        query:
-          type:
-          - string
-          - 'null'
   parameters:
     DetailId:
       name: detailId
@@ -201,6 +154,53 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Envelope'
+  schemas:
+    Detail:
+      type: object
+      x-modeled: true
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        skills:
+          type: array
+          items:
+            type: string
+        criteria:
+          type: string
+    Envelope:
+      type: object
+      description: Standard Sertifier response envelope.
+      properties:
+        message:
+          type:
+          - string
+          - 'null'
+        hasError:
+          type: boolean
+        validationErrors:
+          type: array
+          items:
+            type: string
+        data:
+          description: The operation-specific payload (object or array).
+        content: {}
+    SearchRequest:
+      type: object
+      description: Paginated search request.
+      x-modeled: true
+      properties:
+        page:
+          type: integer
+          default: 1
+        pageSize:
+          type: integer
+          default: 20
+        query:
+          type:
+          - string
+          - 'null'
   securitySchemes:
     secretKey:
       type: apiKey

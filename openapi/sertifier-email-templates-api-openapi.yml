@@ -105,6 +105,28 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    EmailTemplateId:
+      name: emailTemplateId
+      in: path
+      required: true
+      schema:
+        type: string
+    ApiVersion:
+      name: api-version
+      in: header
+      required: true
+      description: API version header. Current documented value is 3.3.
+      schema:
+        type: string
+        default: '3.3'
+  responses:
+    Unauthorized:
+      description: The secretKey is missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
   schemas:
     Envelope:
       type: object
@@ -138,28 +160,6 @@ components:
           type:
           - string
           - 'null'
-  parameters:
-    ApiVersion:
-      name: api-version
-      in: header
-      required: true
-      description: API version header. Current documented value is 3.3.
-      schema:
-        type: string
-        default: '3.3'
-    EmailTemplateId:
-      name: emailTemplateId
-      in: path
-      required: true
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: The secretKey is missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Envelope'
   securitySchemes:
     secretKey:
       type: apiKey

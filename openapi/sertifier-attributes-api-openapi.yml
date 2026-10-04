@@ -115,6 +115,16 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Attribute:
+      type: object
+      x-modeled: true
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        value:
+          type: string
     Envelope:
       type: object
       description: Standard Sertifier response envelope.
@@ -147,16 +157,6 @@ components:
           type:
           - string
           - 'null'
-    Attribute:
-      type: object
-      x-modeled: true
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        value:
-          type: string
   responses:
     Unauthorized:
       description: The secretKey is missing or invalid.
