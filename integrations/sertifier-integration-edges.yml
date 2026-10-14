@@ -1,0 +1,25 @@
+generated: '2026-10-14'
+method: searched
+checked:
+- canvas/integrations/canvas-integration-edges.yml
+source:
+- canvas/integrations/canvas-integration-edges.yml
+edges:
+- partner_name: Canvas (eduappcenter)
+  partner: canvas
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: eduappcenter
+  evidence: https://www.eduappcenter.com/api/v1/lti_apps
+  mirror_of: canvas/integrations/canvas-integration-edges.yml
+  apps: []
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Course Nav, User Nav, Account Nav, Web 2.0
+  badges:
+  - EduAppCenter certified
