@@ -2,6 +2,7 @@ generated: '2026-10-14'
 method: searched
 checked:
 - canvas/integrations/canvas-integration-edges.yml
+- wordpress/integrations/wordpress-integration-edges.yml
 source:
 - canvas/integrations/canvas-integration-edges.yml
 edges:
@@ -23,3 +24,20 @@ edges:
   category: Course Nav, User Nav, Account Nav, Web 2.0
   badges:
   - EduAppCenter certified
+- partner_name: WordPress (own)
+  partner: wordpress
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://wordpress.org/plugins/sertifier-certificates-open-badges/
+  mirror_of: wordpress/integrations/wordpress-integration-edges.yml
+  apps:
+  - Sertifier Certificate & Badge Maker for WordPress – Tutor LMS
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  category: WordPress plugin
