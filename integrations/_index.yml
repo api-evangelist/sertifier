@@ -54,3 +54,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: sertifier-zoom-own
+  label: Zoom (own)
+  partner: zoom
+  partner_name: Zoom (own)
+  category: Zoom app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/ZwurM6p8T1-ZSbFAIfFODg
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
